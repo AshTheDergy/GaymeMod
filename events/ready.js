@@ -16,8 +16,10 @@ client.on("ready", async () => {
     ⣿⣿⣯⡔⢛⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣭⣍⣨⠿⢿⣿⣿⣿
     ⣿⡿⢫⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣝⣿`
     );
+    const channel = client.channels.cache.get(client.config.channel);
+    channel.send("Maw-derating Gaymers UwU")
     client.user.setActivity({
         name: `hmnfg`,
-        type: ActivityType.Watching,
+        type: ActivityType.Listening,
     });
 });  
