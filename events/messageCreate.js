@@ -28,30 +28,36 @@ client.on("messageCreate", async (message) => {
             const originalCategory = message.channel.parentId
             const messageLink = `https://discord.com/channels/${message.guildId}/${message.channel.id}/${message.id}`;
             const cnfg = client.config.channels;
+            console.log(message.author.globalName)
 
             if (originalChannel == cnfg.minecraft) {
                 var user = message.author.username;
                 var content = message.content;
                 var color = '#7D3100'
+                var game = 'Minecraft'
             } else if (originalChannel == cnfg.terraria) {
                 let msgContent = message.content.split(":");
                 var user = msgContent[0].slice(3);
                 var content = msgContent[1].slice(0, -2);
                 var color = '#3EF600'
+                var game = 'Terraria'
             } else if (originalChannel == cnfg.zomboid) {
                 let msgContent = message.content.split(":");
                 var user = msgContent[0]
                 var content = msgContent[1].slice(1)
                 var color = '#BE1100'
+                var game = 'Project Zomboid'
             } else if (originalChannel == cnfg.factorio) {
                 let msgContent = message.content.split(":");
                 var user = msgContent[0]
                 var content = msgContent[1].slice(1)
                 var color = '#FF9600'
+                var game = 'Factorio'
             } else if (originalCategory == cnfg.gmod) {
-                var user = message.author.username.split('[')[1]?.split(']')[0]?.trim() || message.author.username;
+                var user = message.author.name.replace(/^\[.*?\]\s*/, '') || message.author.name;
                 var content = message.content.slice(4);
                 var color = '#00AFFF'
+                var game = `Garry\'s Mod`
             } else {
                 console.log('Not listed');
                 return;
@@ -66,7 +72,7 @@ client.on("messageCreate", async (message) => {
 			.addComponents(check);
 
             const embed = new EmbedBuilder()
-            .setTitle(`**User:** ***${user}***`)
+            .setTitle(`__${game}__\n**User:** ***${user}***`)
             .setDescription(
                 `### **Message:**
                 \`${content}\``
